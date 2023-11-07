@@ -138,5 +138,5 @@ static extern void mouse_event(int dwFlags, int dx, int dy,
             mouse_event((int)(MouseEventFlags.LEFTDOWN), 0, 0, 0, 0);
             mouse_event((int)(MouseEventFlags.LEFTUP), 0, 0, 0, 0);
         }
-    }
+    }  //Test
 }
