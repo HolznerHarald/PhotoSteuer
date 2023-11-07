@@ -11,12 +11,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button x:Name="B1" Grid.Row="0" Click="Button_Click_1" Content="6Zei"/>
-        <Button x:Name="B2" Grid.Row="1" Click="Button_Click_1a" Content="7Zei"/>
-        <Button Grid.Row="2" Click="Button_Click_2" Content="Hier"/>
-        <Button Grid.Row="3" Click="Button_Click_3" Content="Hier"/>
+        <Button x:Name="B1a" Grid.Row="1" Click="Button_Click_1a" Content="7Zei"/>
+        <Button Grid.Row="2" Click="Button_Click_2" Content="B2"/>
+        <Button Grid.Row="3" Click="Button_Click_3" Content="B3"/>
+        <Button Grid.Row="4" Click="Button_Click_4" Content="B4"/>
 
     </Grid>
 </Window>

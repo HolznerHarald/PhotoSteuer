@@ -17,6 +17,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using Point = System.Windows.Point;
 
 namespace WpfApp1
 {
@@ -33,6 +36,7 @@ namespace WpfApp1
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             System.Windows.MessageBox.Show("Click here!");
+            
         }
         private void Button_Click_1a(object sender, RoutedEventArgs e)
         {
@@ -72,6 +76,7 @@ namespace WpfApp1
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+
             Process proc = new Process();
             proc.StartInfo.UseShellExecute = true;
             // proc.StartInfo.FileName = "http://stackoverflow.com";
@@ -79,8 +84,59 @@ namespace WpfApp1
             proc.StartInfo.FileName = "http://google.com";
             proc.Start();
             Thread.Sleep(2000);
-            SendKeys.SendWait("kkkkkkkkkkkkkkk");
-            SendKeys.SendWait("\t");
+            SendKeys.SendWait("orf.at");
+            SendKeys.SendWait("\n");
+            /*Thread.Sleep(2000);
+            LeftClick(300, 300);
+            Thread.Sleep(2000);
+            LeftClick(400, 400);
+            Thread.Sleep(2000);
+            LeftClick(500, 500);*/
         }
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+            Process proc = new Process();
+            proc.StartInfo.UseShellExecute = true;
+            // proc.StartInfo.FileName = "http://stackoverflow.com";
+            proc.StartInfo.FileName = "http://www.orf.at";
+            //proc.StartInfo.FileName = "http://google.com";
+            proc.Start();
+            //Thread.Sleep(2000);
+            //SendKeys.SendWait("orf.at");
+            //SendKeys.SendWait("\n");
+            Thread.Sleep(2000);
+            LeftClick(300, 300);
+            Thread.Sleep(2000);
+            LeftClick(400, 400);
+            Thread.Sleep(2000);
+            LeftClick(500, 500);
         }
+
+        [DllImport("user32.dll")]
+static extern void mouse_event(int dwFlags, int dx, int dy,
+                      int dwData, int dwExtraInfo);
+
+        [Flags]
+        public enum MouseEventFlags
+        {
+            LEFTDOWN = 0x00000002,
+            LEFTUP = 0x00000004,
+            MIDDLEDOWN = 0x00000020,
+            MIDDLEUP = 0x00000040,
+            MOVE = 0x00000001,
+            ABSOLUTE = 0x00008000,
+            RIGHTDOWN = 0x00000008,
+            RIGHTUP = 0x00000010
+        }
+
+        public static void LeftClick(int x, int y)
+        {
+            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(x, y);
+
+            //this.Cursor.Position = new System.Drawing.Point(x, y);
+            mouse_event((int)(MouseEventFlags.LEFTDOWN), 0, 0, 0, 0);
+            mouse_event((int)(MouseEventFlags.LEFTUP), 0, 0, 0, 0);
+        }
+    }
 }
